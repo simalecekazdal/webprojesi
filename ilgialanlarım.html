@@ -2,11 +2,210 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
+
+    <!-- Responsive -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- Ikon Kutuphanesi -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+	<!-- Font -->
+	<link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans&display=swap" rel="stylesheet">
+	
+	<!-- Css -->
+	<link rel="stylesheet" href="style.css">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ece'nin Web Sitesi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #searchForm {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #searchInput {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #searchButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #0a0a0a;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #results {
+            margin-top: 30px;
+        }
+
+        .book {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .book img {
+            width: 80px;
+            margin-right: 20px;
+        }
+
+        .book-info {
+            flex-grow: 1;
+        }
+
+        .book h3 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        .book p {
+            color: #666;
+        }
+    </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-md fixed-top bg-dark navbar-white ">
     
+        <div class="container">
+
+            <a href="index.html" class="navbar-brand text-white">
+                <i class="fas fa-hat-wizard"></i>
+                Şimal Ece
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+				<span class="navbar-toggler-icon"><i class="fas fa-ellipsis-v"></i></span>
+			</button>
+            <div id="navbarCollapse" class="collapse navbar-collapse">
+				<ul class="navbar-nav ml-auto ">
+
+					<li class="nav-item">
+						<a href="ilgialanlarım.html" class="nav-link active  text-white">
+                            <i class="fas fa-book-open"></i>
+	      				İlgi Alanlarım
+	      				</a></li>
+
+					<li class="nav-item">
+						<a href="özgecmis.html" class="nav-link active  text-white">
+                            <i class="fas fa-user"></i>
+	      				Özgeçmiş
+	      				</a></li>
+
+	      			<li class="nav-item">
+						<a href="sehrim.html" class="nav-link active  text-white">
+                            <i class="fas fa-city"></i>
+	      				Şehrim
+	      				</a></li>	
+
+					<li class="nav-item">
+						<a href="mirasımız.html" class="nav-link active  text-white">
+                            <i class="fas fa-landmark"></i>
+	      				Mirasımız
+	      				</a></li>
+
+	      			<li class="nav-item">
+						<a href="iletişim.html" class="nav-link active  text-white">
+                            <i class="fas fa-comments"></i>
+	      				İletişim
+	      				</a></li>
+
+	      			<li class="nav-item">
+						<a href="login.php" class="nav-link active  text-white">
+	      				<i class="fas fa-sign-in-alt"></i>
+                        Log-in
+	      				</a>
+                    </li>				
+				</ul>
+			</div>
+        </div>
+    </nav>
+    <header>
+		<div class="bg-dark text-light jumbotron">
+			<div class="container">
+                <div class="row">
+				<div class="col-12 col-md-8">
+					<h1 class="display-4 font-italic">
+						Kitap okumayı çok severim 
+					</h1>
+                    <p class="lead my-3">
+                        Daha çok aşk ve maceranın bir arada olduğu kitapları okumayı severim. Eğer filmi varsa önce kitabını okumayı tercih ederim. Kitabı okurken kendimi karakterlerle özdeşleştirmeyi çok severim. Aşağıda istediğiniz kitabı aratarak sonuçlarına ulaşabilirsiniz.
+                    </p>
+				</div>
+                <div class="row">
+                    <div class="col-6 col-md-4">
+                        <img class="align-items-center" src="https://pin.it/6Nwz1Ag" height="300" >
+                    </div>
+                </div>
+			    </div>
+            </div>
+		</div>
+	</header>
+    <div id="searchForm">
+        <h1>Kitap Arama</h1>
+        <input type="text" id="searchInput" placeholder="Kitap adı girin">
+        <button id="searchButton" onclick="searchBooks()">Ara</button>
+    </div>
+    <div id="results"></div>
+
+    <script>
+        function searchBooks() {
+            var query = document.getElementById("searchInput").value;
+            var url = "https://www.googleapis.com/books/v1/volumes?q=" + query;
+
+            $.get(url, function(data) {
+                var items = data.items;
+                var resultsDiv = document.getElementById("results");
+                resultsDiv.innerHTML = "";
+
+                if (items) {
+                    items.forEach(function(item) {
+                        var volumeInfo = item.volumeInfo;
+                        var title = volumeInfo.title;
+                        var authors = volumeInfo.authors ? volumeInfo.authors.join(", ") : "";
+                        var thumbnail = volumeInfo.imageLinks ? volumeInfo.imageLinks.thumbnail : "";
+
+                        var bookDiv = document.createElement("div");
+                        bookDiv.classList.add("book");
+
+                        var thumbnailImg = document.createElement("img");
+                        thumbnailImg.src = thumbnail;
+                        bookDiv.appendChild(thumbnailImg);
+
+                        var bookInfoDiv = document.createElement("div");
+                        bookInfoDiv.classList.add("book-info");
+                        bookInfoDiv.innerHTML = "<h3>" + title + "</h3><p>" + authors + "</p>";
+                        bookDiv.appendChild(bookInfoDiv);
+
+                        resultsDiv.appendChild(bookDiv);
+                    });
+                } else {
+                    resultsDiv.innerHTML = "<p>Kitap bulunamadı.</p>";
+                }
+            });
+        }
+    </script>
+    <footer class="py-5 bg-dark text-white text-center">
+        Web Teknolojileri Projesi © Şimal Ece Kazdal 2023
+    </footer>
+     <!-- BOOTSTRAP -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </body>
 </html>
+
