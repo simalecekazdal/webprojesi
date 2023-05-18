@@ -49,3 +49,21 @@ main p i
 	background-size: cover;
 	background-position: 60% 50%;
 }
+
+.vecihiorhan-jumbortan{
+	background-image: url(https://www.tatilcity.net/wp-content/uploads/2019/07/vecihi-orhon-kapisi.jpg);
+	background-size: cover;
+	background-position: 10% 70%;
+}
+
+.acarlarlongozu-jumbortan{
+	background-image: url(https://cdnuploads.aa.com.tr/uploads/Contents/2022/07/20/thumbs_b_c_a912a1323c232650b7bbf93987634662.jpg?v=235338);
+	background-size: cover;
+	background-position: 30% 50%;
+}
+
+.sapanca-jumbortan{
+	background-image: url(https://i.cnnturk.com/i/cnnturk/75/740x416/60c2955517aca90e644bbffe.jpg);
+	background-size: cover;
+	background-position: 10% 70%;
+}
