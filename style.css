@@ -10,8 +10,42 @@ font-family: 'Lato', sans-serif;
 .nav-item:hover {
 	color: rgb(255, 255, 255);
 }
-
+.jumbotron 
+{
+	padding-top: 100px;
+}
 .fa-ellipsis-v
 {
 	color: #fff;
+}
+.container.a
+{
+	color: #fff;
+}
+
+main
+{
+	font-family: 'Open Sans', sans-serif;
+}
+main img
+{
+	width: 100%;
+	height: auto;	
+}
+
+main p i
+{
+	font-size: 0.8rem;
+}
+
+.card img 
+{
+	height: 30rem;
+	width: auto;
+}
+
+.sakarya-jumbotron{
+	background-image: url(https://iasbh.tmgrup.com.tr/e47236/752/395/0/84/600/398?u=https://isbh.tmgrup.com.tr/sbh/2022/11/24/sapanca-gezilecek-yerler-yazin-ve-kisin-sapancada-ne-yapilir-gezilecek-ve-fotograf-cekilecek-yerler-nereler-k1-1669294198796.jpg);
+	background-size: cover;
+	background-position: 60% 50%;
 }
