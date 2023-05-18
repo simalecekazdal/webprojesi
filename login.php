@@ -81,7 +81,7 @@
         </div>
     </nav>
     <header>
-        <div class="bg-info text-light jumbotron">
+        <div class="bg-dark text-light jumbotron">
             <div class="container">
             <div class="col-md-6 px-0">
 					<h1 class="display-4 font-italic">
@@ -107,7 +107,7 @@
 					<input type="password" name="password" class="form-control" placeholder="Şifre 'abc'" required="required">
 				</div>
 
-				<button class="btn btn btn-info" type="submit">Gönder</button>
+				<button class="btn btn btn-dark" type="submit">Gönder</button>
 
 				<br><br><br>
 
@@ -118,7 +118,7 @@
 	</main>
 
 
-	<footer class="py-5 bg-info text-white text-center">
+	<footer class="py-5 bg-dark text-white text-center">
 		Web Teknolojileri Projesi © Şimal Ece Kazdal 2023
 	</footer>
 
