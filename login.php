@@ -95,18 +95,19 @@
 
 		<div class="container">
 			
-			<form action="git-Login.php" method="POST">
+			<form action="gitLogin.php" method="POST" onsubmit="return control()">
 
 				<div class="form-group">
 					<label for="email">Email</label>
 					<input type="text" name="email" class="form-control" placeholder="Email 'abc@sakarya.edu.tr'" required="required">
+					<small class="form-text text-muted">Doldurulması zorunlu alan</small>
 				</div>
 
 				<div class="form-group">
 					<label for="password">Şifre</label>
 					<input type="password" name="password" class="form-control" placeholder="Şifre 'abc'" required="required">
+					<small class="form-text text-muted">Doldurulması zorunlu alan</small>
 				</div>
-
 				<button class="btn btn btn-dark" type="submit">Gönder</button>
 
 				<br><br><br>
@@ -116,6 +117,30 @@
 		</div>
 
 	</main>
+	<!-- JAVASCRIPT -->
+    <script>
+		function control()
+		{
+			var x = document.forms["Form"]["name"].value;
+			if (x == "") 
+			{
+				alert("İsim boş bırakılamaz");
+				return false;
+			}
+			var y = document.forms["Form"]["email"].value;
+			if (y == "") 
+			{
+				alert("Mail Kısmı Boş bırakılamaz");
+				return false;
+			}
+			var forMail = /^[a-zA-Z0-9._-]+@([a-zA-Z0-9.-]+.)+([.])+[a-zA-Z0-9.-]{2,4}$/;
+			if (forMail.test(y) == false) 
+			{
+				alert("Geçersiz Mail Adresi!!!");
+				return false;
+			}
+		}	
+    </script>
 
 
 	<footer class="py-5 bg-dark text-white text-center">
