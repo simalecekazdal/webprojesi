@@ -97,7 +97,7 @@
         <form id="formid" action="git-login.html" method="post" onsubmit="return control()">
 
 				<div class="form-group">
-					<label for="email">Email</label>
+					<label for="name">Email</label>
 					<input type="email" name="name" class="form-control" placeholder="Email 'abc@sakarya.edu.tr'" required="required">
 					<small class="form-text text-muted">Doldurulması zorunlu alan</small>
 				</div>
