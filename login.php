@@ -91,21 +91,20 @@
 			</div>
 		</div>
     </header>
-    <main>
 
-		<div class="container">
-			
-			<form action="gitLogin.php" method="POST" onsubmit="return control()">
+
+	<div class="container" >
+        <form id="formid" action="git-login.html" method="post" onsubmit="return control()">
 
 				<div class="form-group">
 					<label for="email">Email</label>
-					<input type="text" name="email" class="form-control" placeholder="Email 'abc@sakarya.edu.tr'" required="required">
+					<input type="email" name="isim" class="form-control" placeholder="Email 'abc@sakarya.edu.tr'" required="required">
 					<small class="form-text text-muted">Doldurulması zorunlu alan</small>
 				</div>
 
 				<div class="form-group">
 					<label for="password">Şifre</label>
-					<input type="password" name="password" class="form-control" placeholder="Şifre 'abc'" required="required">
+					<input type="password" name="sifre" class="form-control" placeholder="Şifre 'abc'" required="required">
 					<small class="form-text text-muted">Doldurulması zorunlu alan</small>
 				</div>
 				<button class="btn btn btn-dark" type="submit">Gönder</button>
@@ -113,47 +112,42 @@
 				<br><br><br>
 
 			</form>
+        <div class="php">
+         <?php
+    $color = "#FF0000";
+    $color2 = "#FFFFFF";
 
-		</div>
-
-	</main>
-	<!-- JAVASCRIPT -->
-    <script>
-		function control()
-		{
-			var x = document.forms["Form"]["name"].value;
-			if (x == "") 
-			{
-				alert("İsim boş bırakılamaz");
-				return false;
-			}
-			var y = document.forms["Form"]["email"].value;
-			if (y == "") 
-			{
-				alert("Mail Kısmı Boş bırakılamaz");
-				return false;
-			}
-			var forMail = /^[a-zA-Z0-9._-]+@([a-zA-Z0-9.-]+.)+([.])+[a-zA-Z0-9.-]{2,4}$/;
-			if (forMail.test(y) == false) 
-			{
-				alert("Geçersiz Mail Adresi!!!");
-				return false;
-			}
-		}	
-    </script>
-
-
+     if(isset($_POST['isim']) =="" || isset($_POST['sifre'])=="" )
+     {
+        
+         echo"<font color = $color2>*Lütfen Tüm Alanları Doldurun</font>";	
+     }
+     else
+     {
+         if ($_POST['isim']=="abc@sakarya.edu.tr" && $_POST['sifre']=="abc")
+         {
+             echo "<font color=$color2> Hoşgeldiniz</font>".$_POST['isim']."<br>" ;
+             header("Refresh: 10; url=index.html");
+             echo "<font color=$color>10 saniye sonra ANA SAYFAYA yönlendirileceksiniz.Beklememek için </font>".'<a href="index.html">TIKLAYINIZ</a>';
+            
+         }
+         else
+         {
+             echo "<font color =$color>Hatalı Kullanıcı Adı veya Şifre Girdiniz.</font>";	
+         }
+    
+         }
+        
+    ?>  
+    </div>
+    </div>  
+    </div>
 	<footer class="py-5 bg-dark text-white text-center">
 		Web Teknolojileri Projesi © Şimal Ece Kazdal 2023
 	</footer>
-
 	<!-- BOOTSTRAP -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
-
-	
-
 </body>
 </html>
