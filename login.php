@@ -98,13 +98,13 @@
 
 				<div class="form-group">
 					<label for="email">Email</label>
-					<input type="email" name="isim" class="form-control" placeholder="Email 'abc@sakarya.edu.tr'" required="required">
+					<input type="email" name="name" class="form-control" placeholder="Email 'abc@sakarya.edu.tr'" required="required">
 					<small class="form-text text-muted">Doldurulması zorunlu alan</small>
 				</div>
 
 				<div class="form-group">
 					<label for="password">Şifre</label>
-					<input type="password" name="sifre" class="form-control" placeholder="Şifre 'abc'" required="required">
+					<input type="password" name="password" class="form-control" placeholder="Şifre 'abc'" required="required">
 					<small class="form-text text-muted">Doldurulması zorunlu alan</small>
 				</div>
 				<button class="btn btn btn-dark" type="submit">Gönder</button>
@@ -117,16 +117,16 @@
     $color = "#FF0000";
     $color2 = "#FFFFFF";
 
-     if(isset($_POST['isim']) =="" || isset($_POST['sifre'])=="" )
+     if(isset($_POST['name']) =="" || isset($_POST['sifre'])=="" )
      {
         
          echo"<font color = $color2>*Lütfen Tüm Alanları Doldurun</font>";	
      }
      else
      {
-         if ($_POST['isim']=="abc@sakarya.edu.tr" && $_POST['sifre']=="abc")
+         if ($_POST['name']=="abc@sakarya.edu.tr" && $_POST['password']=="abc")
          {
-             echo "<font color=$color2> Hoşgeldiniz</font>".$_POST['isim']."<br>" ;
+             echo "<font color=$color2> Hoşgeldiniz</font>".$_POST['name']."<br>" ;
              header("Refresh: 10; url=index.html");
              echo "<font color=$color>10 saniye sonra ANA SAYFAYA yönlendirileceksiniz.Beklememek için </font>".'<a href="index.html">TIKLAYINIZ</a>';
             
