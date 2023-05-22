@@ -4,7 +4,7 @@
 # Proje Amacı
   Kedim ve şehrim hakkında tanıtım ve bilgi niteliğinde bir web sitesi hazırlamak.
 
-# İçindekiler
+## İçindekiler
  
  # Ana Sayfa
    Bu kısımda kendimi kısaca tanıttım.
